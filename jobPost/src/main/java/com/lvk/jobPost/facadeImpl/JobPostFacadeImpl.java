@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.lvk.jobPost.dto.JobPostDTO;
+import com.lvk.jobPost.exception.EntryNotFoundException;
 import com.lvk.jobPost.facade.JobPostFacade;
 import com.lvk.jobPost.model.JobPostModel;
 import com.lvk.jobPost.serviceImpl.JobPostServiceImpl;
@@ -34,6 +35,9 @@ public class JobPostFacadeImpl implements JobPostFacade{
 	}
 
 	public void createJobPostFacade(JobPostDTO jobPostDTO) {
+		if(jobPostDTO.getJobTitle()==null||jobPostDTO.getJobTitle().length()<=0) {
+			 throw new EntryNotFoundException("Job title missing");
+		}
 		ModelMapper modelMapper = new ModelMapper();
 		JobPostModel post = modelMapper.map(jobPostDTO, JobPostModel.class);
 

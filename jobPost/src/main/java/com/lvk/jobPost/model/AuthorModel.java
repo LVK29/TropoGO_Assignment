@@ -1,5 +1,6 @@
 package com.lvk.jobPost.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,6 +13,7 @@ public class AuthorModel {
 	private String phoneNumber;
 	private String company;
 	private String position;
+	@Column(name="aboutCompany", columnDefinition="TEXT")
 	private String aboutCompany;
 
 	public AuthorModel() {

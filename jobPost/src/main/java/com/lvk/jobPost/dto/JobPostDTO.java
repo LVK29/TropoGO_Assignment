@@ -3,9 +3,7 @@ package com.lvk.jobPost.dto;
 import java.util.Date;
 
 import com.lvk.jobPost.model.AuthorModel;
-
-import lombok.Getter;
-import lombok.Setter;
+import com.sun.istack.NotNull;
 
 enum EmploymentTypeEnum {
 	FULL_TIME, PART_TIME, INTERSHIP
@@ -14,6 +12,7 @@ enum EmploymentTypeEnum {
 public class JobPostDTO {
 
 	private int id;
+	private String jobTitle;
 	private String location;
 	private String responsibilities;
 	private String techStack;
@@ -24,6 +23,14 @@ public class JobPostDTO {
 	private EmploymentTypeEnum employmentType;
 	private AuthorModel jobPoster;
 	private long postedDays;
+
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
 
 	public String getPostedDays() {
 		return postedDays + " days ago";

@@ -3,11 +3,13 @@ package com.lvk.jobPost.model;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,7 +20,10 @@ public class JobPostModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String jobTitle;
 	private String location;
+	@Column
+	@Lob
 	private String responsibilities;
 	private String techStack;
 	private String seniorityLevel;
@@ -36,10 +41,14 @@ public class JobPostModel {
 
 	}
 
-	public JobPostModel(int id, String location, String responsibilities, String techStack, String seniorityLevel,
-			String industry, Date postedTime, String experience, String employmentType, AuthorModel jobPoster) {
+	
+
+	public JobPostModel(int id, String jobTitle, String location, String responsibilities, String techStack,
+			String seniorityLevel, String industry, Date postedTime, String experience, String employmentType,
+			AuthorModel jobPoster) {
 		super();
 		this.id = id;
+		this.jobTitle = jobTitle;
 		this.location = location;
 		this.responsibilities = responsibilities;
 		this.techStack = techStack;
@@ -50,6 +59,21 @@ public class JobPostModel {
 		this.employmentType = employmentType;
 		this.jobPoster = jobPoster;
 	}
+
+	
+
+
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+
 
 	public int getId() {
 		return id;
